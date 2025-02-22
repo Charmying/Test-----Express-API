@@ -5,8 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test Express API</title>
   <link rel="stylesheet" href="./css/reset.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      corePlugins: {
+        preflight: false // 關閉 Tailwind 自帶的 reset
+      }
+    }
+  </script>
 </head>
 <body>
-  測試加上 HTML 後 Deploy 到 Render 的 API 會不會被影響
+  <section class="p-4">
+    <h1 class="text-2xl font-black text-center my-2">測試加上 HTML 後 Deploy 到 Render 的 API 會不會被影響</h1>
+  </section>
 </body>
 </html>
