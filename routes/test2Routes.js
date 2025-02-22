@@ -1,6 +1,5 @@
 const express = require('express');
 const test2 = require('../models/test2');
-
 const router = express.Router();
 
 // 查詢所有資料
