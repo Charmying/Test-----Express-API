@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test1 and test2 CRUD</title>
+  <link rel="stylesheet" href="../../css/reset.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      corePlugins: {
+        preflight: false // 關閉 Tailwind 自帶的 reset
+      }
+    }
+  </script>
+</head>
+<body>
+  <section class="p-4">
+    <h1>MongoDB CRUD 操作 (test1 & test2)</h1>
+    <!-- 切換操作 test1 或 test2 -->
+    <div>
+      <button onclick="switchCollection('test1')" id="test1Btn" class="active-collection">操作 test1</button>
+      <button onclick="switchCollection('test2')" id="test2Btn">操作 test2</button>
+    </div>
+    <!-- 新增 or 修改資料 -->
+    <h2>新增 or 修改資料</h2>
+    <form id="dataForm" onsubmit="handleSubmit(event)">
+      <input type="hidden" id="recordId">
+      <div>
+        <label for="id">ID:</label>
+        <input type="text" id="id" required>
+      </div>
+      <div>
+        <label for="userName">用戶名稱:</label>
+        <input type="text" id="userName" required>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+      </div>
+      <div>
+        <label for="password">密碼:</label>
+        <input type="password" id="password" required>
+      </div>
+      <div>
+        <button type="submit">儲存</button>
+        <button type="button" onclick="clearForm()">清除</button>
+      </div>
+    </form>
+      <!-- 顯示資料 -->
+      <h2>現有資料</h2>
+      <button onclick="fetchData()">刷新資料列表</button>
+      <table>
+        <thead>
+          <tr>
+            <th>操作</th>
+            <th>ID</th>
+            <th>用戶名稱</th>
+            <th>Email</th>
+            <th>密碼</th>
+          </tr>
+        </thead>
+        <tbody id="dataBody"></tbody>
+      </table>
+  </section>
+
+  <script src="./all.js"></script>
+</body>
+</html>
