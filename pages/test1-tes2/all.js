@@ -34,7 +34,7 @@ async function fetchData() {
       tbody.innerHTML += row;
     });
   } catch (error) {
-    alert('取得資料失敗: ', error.message);
+    console.error(error)
   }
 }
 
@@ -77,7 +77,7 @@ async function editRecord(recordId) {
     document.getElementById('email').value = data.email;
     document.getElementById('password').value = data.password;
   } catch (error) {
-    alert('取得資料失敗: ', error.message);
+    console.error(error)
   }
 }
 
