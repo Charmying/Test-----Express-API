@@ -6,58 +6,51 @@
   <title>test1 and test2 CRUD</title>
   <link rel="stylesheet" href="../../css/reset.css">
   <link rel="stylesheet" href="../../css/style.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      corePlugins: {
-        preflight: false // 關閉 Tailwind 自帶的 reset
-      }
-    }
   </script>
 </head>
 <body>
-  <section class="p-4">
-    <h1 class="text-2xl font-black text-center">MongoDB CRUD 操作 (test1 & test2)</h1>
-    <div class="my-8">
+  <section>
+    <h1>MongoDB CRUD 操作 (test1 & test2)</h1>
+    <div> 
       <!-- 切換操作 test1 或 test2 -->
-      <div class="flex gap-4 justify-center my-8">
+      <div>
         <button onclick="switchCollection('test1')" id="test1Btn" class="active-collection">操作 test1</button>
         <button onclick="switchCollection('test2')" id="test2Btn">操作 test2</button>
       </div>
       <!-- 新增 or 修改資料 -->
-      <div class="my-8">
-        <h2 class="text-lg font-bold text-center mb-4">新增 or 修改資料</h2>
-        <form class="mb-2" id="dataForm" onsubmit="handleSubmit(event)">
+      <div>
+        <h2>新增 or 修改資料</h2>
+        <form id="dataForm" onsubmit="handleSubmit(event)">
           <input type="hidden" id="recordId">
-          <div class="flex justify-center mb-2">
-            <label class="block w-[100px]" for="id">ID:</label>
-            <input class="block" type="text" id="id" required>
+          <div>
+            <label for="id">ID:</label>
+            <input type="text" id="id" required>
           </div>
-          <div class="flex justify-center mb-2">
-            <label class="block w-[100px]" for="userName">用戶名稱:</label>
-            <input class="block" type="text" id="userName" required>
+          <div>
+            <label for="userName">用戶名稱:</label>
+            <input type="text" id="userName" required>
           </div>
-          <div class="flex justify-center mb-2">
-            <label class="block w-[100px]" for="email">Email:</label>
-            <input class="block" type="email" id="email" required>
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
           </div>
-          <div class="flex justify-center mb-4">
-            <label class="block w-[100px]" for="password">密碼:</label>
-            <input class="block" type="password" id="password" required>
+          <div>
+            <label for="password">密碼:</label>
+            <input type="password" id="password" required>
           </div>
-          <div  class="flex justify-center gap-4">
+          <div>
             <button type="submit">儲存</button>
             <button type="button" onclick="clearForm()">清除</button>
           </div>
         </form>
       </div>
       <!-- 顯示資料 -->
-      <div class="my-8">
-        <h2 class="text-lg text-center font-bold mb-4">現有資料</h2>
-        <div class="flex justify-center mb-4">
+      <div>
+        <h2>現有資料</h2>
+        <div>
           <button onclick="fetchData()">刷新資料列表</button>
         </div>
-        <div class="flex justify-center">
+        <div>
           <table>
             <thead>
               <tr>
