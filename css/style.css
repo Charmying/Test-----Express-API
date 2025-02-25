@@ -1,10 +1,103 @@
+/** Block */
+body {
+  color: #FFFFFF;
+  background-color: #000000;
+}
+
+section {
+  padding: 1rem;
+}
+
+
+
+/** Text */
+h1 {
+  font-size: 24px;
+  text-align: center;
+  margin: 2rem 0 ;
+}
+
+h2 {
+  font-size: 20px;
+  text-align: center;
+  margin: 1rem 0 ;
+}
+
+
+
+/** Link */
+a {
+  padding: 0.5rem 1rem;
+  border: 1px solid #FFFFFF;
+}
+
+
+
+/** Form */
+label {
+  width: 125px;
+  align-self: center;
+}
+
+input {
+  width: 200px;
+  height: fit-content;
+  align-self: center;
+  padding: 0.5rem;
+}
+
+
+
 /** Table */
 table {
-  border: 1px solid #000000;
+  border: 1px solid #FFFFFF;
 }
 
 th, td {
   text-align: center;
   padding: 1rem;
-  border: 1px solid #000000;
+  border: 1px solid #FFFFFF;
+}
+
+
+
+/** Class */
+.flex {
+  display: flex;
+}
+
+.block {
+  display: block;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.my-2 {
+  margin: 0.5rem 0;
+}
+
+.my-4 {
+  margin: 1rem 0;
+}
+
+.my-8 {
+  margin: 2rem 0;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.lh-2 {
+  line-height: 2;
+}
+
+.lh-3 {
+  line-height: 3;
 }
