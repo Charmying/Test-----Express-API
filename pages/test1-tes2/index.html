@@ -11,46 +11,46 @@
 <body>
   <section>
     <h1>MongoDB CRUD 操作 (test1 & test2)</h1>
-    <div> 
+    <div class="my-8"> 
       <!-- 切換操作 test1 或 test2 -->
-      <div>
+      <div class="flex justify-center gap-4 my-8">
         <button onclick="switchCollection('test1')" id="test1Btn" class="active-collection">操作 test1</button>
         <button onclick="switchCollection('test2')" id="test2Btn">操作 test2</button>
       </div>
       <!-- 新增 or 修改資料 -->
-      <div>
+      <div class="my-8">
         <h2>新增 or 修改資料</h2>
         <form id="dataForm" onsubmit="handleSubmit(event)">
           <input type="hidden" id="recordId">
-          <div>
+          <div class="flex justify-center my-2">
             <label for="id">ID:</label>
             <input type="text" id="id" required>
           </div>
-          <div>
+          <div class="flex justify-center my-2">
             <label for="userName">用戶名稱:</label>
             <input type="text" id="userName" required>
           </div>
-          <div>
+          <div class="flex justify-center my-2">
             <label for="email">Email:</label>
             <input type="email" id="email" required>
           </div>
-          <div>
+          <div class="flex justify-center my-2">
             <label for="password">密碼:</label>
             <input type="password" id="password" required>
           </div>
-          <div>
+          <div class="flex justify-center gap-4 my-4">
             <button type="submit">儲存</button>
             <button type="button" onclick="clearForm()">清除</button>
           </div>
         </form>
       </div>
       <!-- 顯示資料 -->
-      <div>
+      <div class="my-8">
         <h2>現有資料</h2>
-        <div>
+        <div class="flex justify-center my-4">
           <button onclick="fetchData()">刷新資料列表</button>
         </div>
-        <div>
+        <div class="flex justify-center">
           <table>
             <thead>
               <tr>
