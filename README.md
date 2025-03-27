@@ -9,3 +9,5 @@
 2. npm install express mongoose cors body-parser dotenv
 
 3. node server.js
+
+4. npm install bcrypt jsonwebtoken (用於生成和驗證 JWT)

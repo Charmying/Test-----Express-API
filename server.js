@@ -7,6 +7,7 @@ require('dotenv').config();
 // Import routes
 const test1Routes = require('./routes/test1Routes');
 const test2Routes = require('./routes/test2Routes');
+const userRoutes = require('./routes/userRoutes');
 
 // Initialize app
 const app = express();
@@ -22,6 +23,7 @@ mongoose
 // Use routes
 app.use('/test1', test1Routes);
 app.use('/test2', test2Routes);
+app.use('/users', userRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 4000;

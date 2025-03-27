@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>個人資料</title>
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  </script>
+</head>
+<body>
+  <section>
+    <h1>個人資料</h1>
+    <div class="my-8"> 
+      <div id="userInfo">
+        <p><strong>帳號:</strong><span id="account"></span></p>
+        <p><strong>電子郵件:</strong><span id="email"></span></p>
+        <p><strong>使用者名稱:</strong><span id="userName"></span></p>
+        <p><strong>手機號碼:</strong><span id="phone"></span></p>
+        <p><strong>地址:</strong><span id="address"></span></p>
+        <p><strong>個人簡介:</strong><span id="bio"></span></p>
+      </div>
+      <button id="editButton">編輯資料</button>
+      <form id="editForm" style="display:none;">
+        <label for="userName">使用者名稱:</label>
+        <input type="text" id="editUserName"><br>
+        <label for="phone">手機號碼:</label>
+        <input type="text" id="editPhone"><br>
+        <label for="address">地址:</label>
+        <input type="text" id="editAddress"><br>
+        <label for="bio">個人簡介:</label>
+        <textarea id="editBio"></textarea><br>
+        <button type="submit">儲存變更</button>
+      </form>
+      <div id="message"></div>
+    </div>
+  </section>
+
+  <script src="./profile.js"></script>
+</body>
+</html>
