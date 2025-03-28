@@ -94,6 +94,13 @@ th, td {
   flex-wrap: wrap;
 }
 
+
+
+/** text */
+.text-center {
+  text-align: center;
+}
+
 .lh-2 {
   line-height: 2;
 }
