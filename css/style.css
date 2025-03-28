@@ -46,6 +46,13 @@ input {
   padding: 0.5rem;
 }
 
+textarea {
+  width: 200px;
+  height: fit-content;
+  align-self: center;
+  padding: 0.5rem;
+}
+
 
 
 /** Table */
