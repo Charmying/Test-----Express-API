@@ -13,14 +13,22 @@
     <h1>登入</h1>
     <div class="my-8"> 
       <form id="loginForm">
-        <label for="account">帳號:</label>
-        <input type="text" id="account" required><br>
-        <label for="password">密碼:</label>
-        <input type="password" id="password" required><br>
-        <button type="submit">登入</button>
+        <div class="flex justify-center my-2">
+          <label for="account">帳號:</label>
+          <input type="text" id="account" required>
+        </div>
+        <div class="flex justify-center my-2">
+          <label for="password">密碼:</label>
+          <input type="password" id="password" required>
+        </div>
+        <div class="flex justify-center my-8">
+          <button type="submit">登入</button>
+        </div>
+        <div class="text-center my-8" id="message"></div>
       </form>
-      <div id="message"></div>
-      <p>尚未註冊？<a href="../register/register.html">點此註冊</a></p>
+    </div>
+    <div class="flex justify-center my-8">
+      <a href="../register/register.html">點此註冊</a>
     </div>
   </section>
 
