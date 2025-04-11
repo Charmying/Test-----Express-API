@@ -41,7 +41,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
 
     const data = await response.json();
     messageDiv.innerText = '註冊成功！請前往登入';
-    setTimeout(() => (window.location.href = '../login/index.html'), 2000);
+    setTimeout(() => (window.location.href = '../login/login.html'), 2000);
   } catch (error) {
     messageDiv.innerText = '錯誤：' + error.message;
   }
