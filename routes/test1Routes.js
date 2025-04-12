@@ -1,76 +1,115 @@
+/**
+ * Test1 資料模型的路由處理
+ * 提供 CRUD 操作 API
+ */
+
 const express = require('express');
-const test1 = require('../models/test1');
+const Test1 = require('../models/test1');
 const router = express.Router();
 
-// Fetch all data
+/**
+ * 取得所有資料
+ * GET /test1
+ */
 router.get('/', async (req, res) => {
   try {
-    const data = await test1.find();
+    const data = await Test1.find();
     res.status(200).json(data);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch data' });
+    console.error('取得所有資料錯誤:', error);
+    res.status(500).json({ error: '取得資料失敗' });
   }
 });
 
-// Fetch a single record
+/**
+ * 取得單筆資料
+ * GET /test1/:id
+ */
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const data = await test1.findById(id);
+    const data = await Test1.findById(id);
+    
     if (!data) {
-      return res.status(404).json({ error: 'Record not found' });
+      return res.status(404).json({ error: '找不到該筆資料' });
     }
+    
     res.status(200).json(data);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch data' });
+    console.error('取得單筆資料錯誤:', error);
+    res.status(500).json({ error: '取得資料失敗' });
   }
 });
 
-// Add new data
+/**
+ * 新增資料
+ * POST /test1
+ */
 router.post('/', async (req, res) => {
   try {
     const { id, email, password, userName } = req.body;
-    const newData = new test1({ id, email, password, userName });
+    
+    // 檢查必要欄位
+    if (!email || !userName) {
+      return res.status(400).json({ error: '缺少必要欄位' });
+    }
+    
+    const newData = new Test1({ id, email, password, userName });
     await newData.save();
-    res.status(201).json({ message: 'Data added successfully', data: newData });
+    
+    res.status(201).json({ message: '資料新增成功', data: newData });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to add data' });
+    console.error('新增資料錯誤:', error);
+    res.status(500).json({ error: '新增資料失敗' });
   }
 });
 
-// Update data
+/**
+ * 更新資料
+ * PUT /test1/:_id
+ */
 router.put('/:_id', async (req, res) => {
   try {
     const { _id } = req.params;
     const { id, email, password, userName } = req.body;
-    const updatedData = await test1.findByIdAndUpdate(
+    
+    const updatedData = await Test1.findByIdAndUpdate(
       _id,
       { id, email, password, userName },
       { new: true, runValidators: true }
     );
+    
     if (!updatedData) {
-      return res.status(404).json({ error: 'Record not found' });
+      return res.status(404).json({ error: '找不到該筆資料' });
     }
-    res.status(200).json({ message: 'Data updated successfully', data: updatedData });
+    
+    res.status(200).json({ message: '資料更新成功', data: updatedData });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to update data' });
+    console.error('更新資料錯誤:', error);
+    res.status(500).json({ error: '更新資料失敗' });
   }
 });
 
-// Delete data
+/**
+ * 刪除資料
+ * DELETE /test1/:_id
+ */
 router.delete('/:_id', async (req, res) => {
   try {
-    // Use the provided _id
+    // 使用傳遞的 _id
     const { _id } = req.params;
-    // Find and delete by _id
-    const deletedData = await test1.findOneAndDelete({ _id: _id });
-
+    
+    // 使用 _id 查找並刪除
+    const deletedData = await Test1.findByIdAndDelete(_id);
+    
     if (!deletedData) {
-      return res.status(404).json({ error: 'Record not found' });
+      return res.status(404).json({ error: '找不到該筆資料' });
     }
-    res.status(200).json({ message: 'Data deleted successfully' });
+    
+    res.status(200).json({ message: '資料刪除成功' });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to delete data' });
+    console.error('刪除資料錯誤:', error);
+    res.status(500).json({ error: '刪除資料失敗' });
   }
 });
 

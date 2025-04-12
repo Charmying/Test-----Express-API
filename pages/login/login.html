@@ -1,32 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>登入頁面</title>
   <link rel="stylesheet" href="../../css/reset.css">
   <link rel="stylesheet" href="../../css/style.css">
-  </script>
 </head>
 <body>
   <section>
     <h1>登入</h1>
     <div class="my-8"> 
+      <!-- 登入表單 -->
       <form id="loginForm">
+        <!-- 帳號輸入區塊 -->
         <div class="flex justify-center my-2">
           <label for="account">帳號:</label>
           <input type="text" id="account" required>
         </div>
+        <!-- 密碼輸入區塊 -->
         <div class="flex justify-center my-2">
           <label for="password">密碼:</label>
           <input type="password" id="password" required>
         </div>
+        <!-- 登入按鈕 -->
         <div class="flex justify-center my-8">
           <button type="submit">登入</button>
         </div>
+        <!-- 訊息顯示區 -->
         <div class="text-center my-8" id="message"></div>
       </form>
     </div>
+    <!-- 註冊連結 -->
     <div class="flex justify-center my-8">
       <a href="../register/register.html">點此註冊</a>
     </div>

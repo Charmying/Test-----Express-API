@@ -1,56 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>註冊頁面</title>
   <link rel="stylesheet" href="../../css/reset.css">
   <link rel="stylesheet" href="../../css/style.css">
-  </script>
 </head>
 <body>
   <section>
     <h1>註冊</h1>
     <div class="my-8"> 
+      <!-- 註冊表單 -->
       <form id="registerForm">
+        <!-- 帳號輸入 -->
         <div class="flex justify-center my-2">
           <label for="account">帳號:</label>
           <input type="text" id="account" required>
         </div>
+        <!-- 電子郵件輸入 -->
         <div class="flex justify-center my-2">
           <label for="email">電子郵件:</label>
           <input type="email" id="email" required>
         </div>
+        <!-- 密碼輸入 -->
         <div class="flex justify-center my-2">
           <label for="password">密碼:</label>
           <input type="password" id="password" required>
         </div>
+        <!-- 確認密碼輸入 -->
         <div class="flex justify-center my-2">
           <label for="confirmPassword">確認密碼:</label>
           <input type="password" id="confirmPassword" required>
         </div>
+        <!-- 使用者名稱輸入 -->
         <div class="flex justify-center my-2">
           <label for="userName">使用者名稱:</label>
           <input type="text" id="userName" required>
         </div>
+        <!-- 手機號碼輸入 -->
         <div class="flex justify-center my-2">
           <label for="phone">手機號碼:</label>
           <input type="text" id="phone" required>
         </div>
+        <!-- 地址輸入（選填） -->
         <div class="flex justify-center my-2">
           <label for="address">地址 (選填):</label>
           <input type="text" id="address">
         </div>
+        <!-- 個人簡介輸入（選填） -->
         <div class="flex justify-center my-2">
           <label for="bio">個人簡介 (選填):</label>
           <textarea id="bio"></textarea>
         </div>
+        <!-- 註冊按鈕 -->
         <div class="flex justify-center my-8">
           <button type="submit">註冊</button>
         </div>
+        <!-- 訊息顯示區 -->
         <div class="text-center my-8" id="message"></div>
       </form>
     </div>
+    <!-- 登入連結 -->
     <div class="flex justify-center my-8">
       <a href="../login/login.html">點此登入</a>
     </div>

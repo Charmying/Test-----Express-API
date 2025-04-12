@@ -1,50 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>test1 and test2 CRUD</title>
+  <title>test1 和 test2 資料管理</title>
   <link rel="stylesheet" href="../../css/reset.css">
   <link rel="stylesheet" href="../../css/style.css">
-  </script>
 </head>
 <body>
   <section>
-    <h1>MongoDB CRUD 操作 (test1 & test2)</h1>
+    <h1>MongoDB CRUD 操作 (test1 與 test2)</h1>
     <div class="my-8"> 
-      <!-- 切換操作 test1 或 test2 -->
+      <!-- 資料集合切換按鈕區 -->
       <div class="flex justify-center gap-4 my-8">
         <button onclick="switchCollection('test1')" id="test1Btn" class="active-collection">操作 test1</button>
         <button onclick="switchCollection('test2')" id="test2Btn">操作 test2</button>
       </div>
-      <!-- 新增 or 修改資料 -->
+      
+      <!-- 資料新增/修改表單區 -->
       <div class="my-8">
-        <h2>新增 or 修改資料</h2>
+        <h2>新增或修改資料</h2>
         <form id="dataForm" onsubmit="handleSubmit(event)">
+          <!-- 隱藏欄位，用於存放記錄ID (修改時使用) -->
           <input type="hidden" id="recordId">
+          
+          <!-- ID 輸入 -->
           <div class="flex justify-center my-2">
             <label for="id">ID:</label>
             <input type="text" id="id" required>
           </div>
+          
+          <!-- 用戶名稱輸入 -->
           <div class="flex justify-center my-2">
             <label for="userName">用戶名稱:</label>
             <input type="text" id="userName" required>
           </div>
+          
+          <!-- Email 輸入 -->
           <div class="flex justify-center my-2">
             <label for="email">Email:</label>
             <input type="email" id="email" required>
           </div>
+          
+          <!-- 密碼輸入 -->
           <div class="flex justify-center my-2">
             <label for="password">密碼:</label>
             <input type="password" id="password" required>
           </div>
+          
+          <!-- 操作按鈕區 -->
           <div class="flex justify-center gap-4 my-4">
             <button type="submit">儲存</button>
             <button type="button" onclick="clearForm()">清除</button>
           </div>
         </form>
       </div>
-      <!-- 顯示資料 -->
+      
+      <!-- 資料顯示區 -->
       <div class="my-8">
         <h2>現有資料</h2>
         <div class="flex justify-center my-4">

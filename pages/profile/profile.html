@@ -1,68 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>個人資料</title>
   <link rel="stylesheet" href="../../css/reset.css">
   <link rel="stylesheet" href="../../css/style.css">
-  </script>
 </head>
 <body>
   <section>
     <h1>個人資料</h1>
     <div class="my-8"> 
+      <!-- 使用者資訊顯示區 -->
       <div id="userInfo">
+        <!-- 帳號資訊 -->
         <div class="flex justify-center my-2">
           <p style="width: 125px;">帳號:</p>
           <p style="width: 200px;" id="account"></p>
         </div>
+        <!-- 電子郵件資訊 -->
         <div class="flex justify-center my-2">
           <p style="width: 125px;">電子郵件:</p>
           <p style="width: 200px;" id="email"></p>
         </div>
+        <!-- 使用者名稱資訊 -->
         <div class="flex justify-center my-2">
           <p style="width: 125px;">使用者名稱:</p>
           <p style="width: 200px;" id="userName"></p>
         </div>
+        <!-- 手機號碼資訊 -->
         <div class="flex justify-center my-2">
           <p style="width: 125px;">手機號碼:</p>
           <p style="width: 200px;" id="phone"></p>
         </div>
+        <!-- 地址資訊 -->
         <div class="flex justify-center my-2">
           <p style="width: 125px;">地址:</p>
           <p style="width: 200px;" id="address"></p>
         </div>
+        <!-- 個人簡介資訊 -->
         <div class="flex justify-center my-2">
           <p style="width: 125px;">個人簡介:</p>
           <p style="width: 200px;" id="bio"></p>
         </div>
       </div>
+      <!-- 編輯按鈕 -->
       <div class="flex justify-center my-8">
         <button id="editButton">編輯資料</button>
       </div>
+      <!-- 編輯表單區域 (預設隱藏) -->
       <div class="my-8">
         <form id="editForm" style="display: none;">
+          <!-- 使用者名稱編輯 -->
           <div class="flex justify-center my-2">
-            <label for="userName">使用者名稱:</label>
+            <label for="editUserName">使用者名稱:</label>
             <input type="text" id="editUserName">
           </div>
+          <!-- 手機號碼編輯 -->
           <div class="flex justify-center my-2">
-            <label for="phone">手機號碼:</label>
+            <label for="editPhone">手機號碼:</label>
             <input type="text" id="editPhone">
           </div>
+          <!-- 地址編輯 -->
           <div class="flex justify-center my-2">
-            <label for="address">地址:</label>
+            <label for="editAddress">地址:</label>
             <input type="text" id="editAddress">
           </div>
+          <!-- 個人簡介編輯 -->
           <div class="flex justify-center my-2">
-            <label for="bio">個人簡介:</label>
+            <label for="editBio">個人簡介:</label>
             <textarea id="editBio"></textarea>
           </div>
+          <!-- 儲存按鈕 -->
           <div class="flex justify-center my-8">
             <button type="submit">儲存變更</button>
           </div>
         </form>
+        <!-- 訊息顯示區 -->
         <div class="text-center my-8" id="message"></div>
       </div>
     </div>
