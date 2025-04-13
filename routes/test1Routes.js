@@ -1,10 +1,10 @@
 /**
- * Test1 資料模型的路由處理
+ * test1 資料模型的路由處理
  * 提供 CRUD 操作 API
  */
 
 const express = require('express');
-const Test1 = require('../models/test1');
+const test1 = require('../models/test1');
 const router = express.Router();
 
 /**
@@ -13,7 +13,7 @@ const router = express.Router();
  */
 router.get('/', async (req, res) => {
   try {
-    const data = await Test1.find();
+    const data = await test1.find();
     res.status(200).json(data);
   } catch (error) {
     console.error('取得所有資料錯誤:', error);
@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const data = await Test1.findById(id);
+    const data = await test1.findById(id);
     
     if (!data) {
       return res.status(404).json({ error: '找不到該筆資料' });
@@ -54,7 +54,7 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ error: '缺少必要欄位' });
     }
     
-    const newData = new Test1({ id, email, password, userName });
+    const newData = new test1({ id, email, password, userName });
     await newData.save();
     
     res.status(201).json({ message: '資料新增成功', data: newData });
@@ -73,7 +73,7 @@ router.put('/:_id', async (req, res) => {
     const { _id } = req.params;
     const { id, email, password, userName } = req.body;
     
-    const updatedData = await Test1.findByIdAndUpdate(
+    const updatedData = await test1.findByIdAndUpdate(
       _id,
       { id, email, password, userName },
       { new: true, runValidators: true }
@@ -100,7 +100,7 @@ router.delete('/:_id', async (req, res) => {
     const { _id } = req.params;
     
     // 使用 _id 查找並刪除
-    const deletedData = await Test1.findByIdAndDelete(_id);
+    const deletedData = await test1.findByIdAndDelete(_id);
     
     if (!deletedData) {
       return res.status(404).json({ error: '找不到該筆資料' });
