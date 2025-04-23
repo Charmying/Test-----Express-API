@@ -15,6 +15,7 @@ require('dotenv').config();
 const test1Routes = require('./routes/test1Routes');
 const test2Routes = require('./routes/test2Routes');
 const userRoutes = require('./routes/userRoutes');
+const qrcodeOrderRoutes = require('./routes/qrcodeOrderRoutes');
 
 /** Initialize Express */
 const app = express();
@@ -44,6 +45,7 @@ mongoose
 app.use('/test1', test1Routes);
 app.use('/test2', test2Routes);
 app.use('/users', userRoutes);
+app.use('/qrcodeOrder', qrcodeOrderRoutes);
 
 // Set up homepage route
 app.get('/', (req, res) => {
