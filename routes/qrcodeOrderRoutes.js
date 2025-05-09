@@ -2,7 +2,7 @@ const express = require('express');
 const QRCodeOrder = require('../models/qrcodeOrder');
 const router = express.Router();
 
-// 提交訂單
+/** 提交訂單 */
 router.post('/orders', async (req, res) => {
   try {
     const { tableNumber, items } = req.body;
@@ -14,7 +14,7 @@ router.post('/orders', async (req, res) => {
   }
 });
 
-// 查看所有待處理訂單
+/** 查看所有待處理訂單 */
 router.get('/orders', async (req, res) => {
   try {
     const orders = await QRCodeOrder.find({ status: 'pending' });
@@ -24,7 +24,7 @@ router.get('/orders', async (req, res) => {
   }
 });
 
-// 標記訂單完成
+/** 標記訂單完成 */
 router.put('/orders/:id/complete', async (req, res) => {
   try {
     const order = await QRCodeOrder.findByIdAndUpdate(
@@ -38,7 +38,7 @@ router.put('/orders/:id/complete', async (req, res) => {
   }
 });
 
-// 生成營業報表
+/** 生成營業報表 */
 router.get('/reports', async (req, res) => {
   try {
     const completedOrders = await QRCodeOrder.find({ status: 'completed' });
@@ -52,7 +52,7 @@ router.get('/reports', async (req, res) => {
   }
 });
 
-// 清空資料庫
+/**  */
 router.delete('/clear', async (req, res) => {
   try {
     await QRCodeOrder.deleteMany({});
