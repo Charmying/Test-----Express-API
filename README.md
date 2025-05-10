@@ -11,3 +11,5 @@
 3. node server.js
 
 4. npm install bcrypt jsonwebtoken (用於生成和驗證 JWT)
+
+5. npm install socket.io

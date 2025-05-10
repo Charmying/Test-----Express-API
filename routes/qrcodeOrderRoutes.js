@@ -8,6 +8,10 @@ router.post('/orders', async (req, res) => {
     const { tableNumber, items } = req.body;
     const newOrder = new QRCodeOrder({ tableNumber, items });
     await newOrder.save();
+    /** 即時推播新訂單 */
+    const io = req.app.get('io');
+    /** 全部 client 接收 */
+    io.emit('newOrder', newOrder);
     res.status(201).json({ message: '訂單已提交', order: newOrder });
   } catch (error) {
     res.status(500).json({ error: '提交訂單失敗' });

@@ -5,6 +5,8 @@
  */
 
 const express = require('express');
+const http = require('http');
+const { Server } = require('socket.io');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -19,6 +21,17 @@ const qrcodeOrderRoutes = require('./routes/qrcodeOrderRoutes');
 
 /** Initialize Express */
 const app = express();
+/** use http server */
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+  }
+});
+
+/** send io to routes */
+app.set('io', io);
 
 /** Middleware */
 app.use(cors()); // Allow cross-origin requests
@@ -69,6 +82,6 @@ app.get('/profile', (req, res) => {
 
 // Start the server
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
