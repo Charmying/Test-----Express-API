@@ -48,7 +48,20 @@ if (!MONGO_URI) {
 /** Connect to MongoDB */
 mongoose
   .connect(MONGO_URI)
-  .then(() => console.log('✅ Connected to MongoDB'))
+  .then(async () => {
+    console.log('✅ Connected to MongoDB');
+    /** initial table number */
+    const Table = require('./models/table');
+    for (let i = 1; i <= 10; i++) {
+      const tableNumber = i.toString();
+      const existingTable = await Table.findOne({ tableNumber });
+      if (!existingTable) {
+        await Table.create({ tableNumber, status: 'available', qrCodeUrl: null });
+        console.log(`✅ 桌號 ${tableNumber} 初始化完成`);
+      }
+    }
+    console.log('✅ 所有桌號初始化完成');
+  })
   .catch((err) => {
     console.error('❌ MongoDB connection error:', err);
     process.exit(1); // Stop server if database connection fails
