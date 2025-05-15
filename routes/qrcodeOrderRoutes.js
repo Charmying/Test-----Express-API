@@ -12,16 +12,15 @@ const vercelUrl = 'https://test-angular-git-master-charmys-projects.vercel.app/q
 router.post('/orders', async (req, res) => {
   try {
     const { tableNumber, items, token } = req.body;
-    /** 驗證桌號 + token 是否有效 */
+    // 驗證桌號 + token 是否有效
     const table = await Table.findOne({ tableNumber, status: 'occupied', qrCodeToken: token });
     if (!table) {
       return res.status(400).json({ error: '無效的桌號或連結已失效' });
     }
     const newOrder = new QRCodeOrder({ tableNumber, items });
     await newOrder.save();
-    /** 即時推播新訂單 */
+    // 即時推播新訂單
     const io = req.app.get('io');
-    /** 全部 client 接收 */
     io.emit('newOrder', newOrder);
     res.status(201).json({ message: '訂單已提交', order: newOrder });
   } catch (error) {
@@ -68,7 +67,7 @@ router.get('/reports', async (req, res) => {
   }
 });
 
-/**  */
+/** 清空資料庫 */
 router.delete('/clear', async (req, res) => {
   try {
     await QRCodeOrder.deleteMany({});
@@ -94,9 +93,8 @@ router.post('/tables/:tableNumber/occupy', async (req, res) => {
     const table = await Table.findOne({ tableNumber: req.params.tableNumber });
     if (!table) return res.status(404).json({ error: '桌號不存在' });
     if (table.status === 'occupied') return res.status(400).json({ error: '桌號已有人' });
-    /** 產生唯一 token */
-    const token = uuidv4();
-    const clientBase = localUrl;
+    const token = uuidv4(); // 產生唯一 token
+    const clientBase = vercelUrl;
     const qrCodeUrl = `${clientBase}?table=${table.tableNumber}&token=${token}`;
     table.status = 'occupied';
     table.qrCodeUrl = qrCodeUrl;
