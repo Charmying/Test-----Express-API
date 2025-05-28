@@ -107,6 +107,24 @@ router.post('/tables/:tableNumber/occupy', async (req, res) => {
   }
 });
 
+/** 取得某桌的歷史訂單 */
+router.get('/tables/:tableNumber/orders', async (req, res) => {
+  try {
+    // 檢查桌號是否存在
+    const table = await Table.findOne({ tableNumber: req.params.tableNumber });
+    if (!table) {
+      return res.status(404).json({ error: '桌號不存在' });
+    }
+
+    // 查詢該桌的歷史訂單，並按時間降序排列
+    const orders = await QRCodeOrder.find({ tableNumber: req.params.tableNumber }).sort({ createdAt: -1 });
+    res.status(200).json(orders);
+  } catch (error) {
+    console.error('取得歷史訂單失敗:', error);
+    res.status(500).json({ error: '無法取得歷史訂單' });
+  }
+});
+
 /** 結帳並使 QR Code 失效 */
 router.post('/tables/:tableNumber/checkout', async (req, res) => {
   try {
@@ -117,6 +135,7 @@ router.post('/tables/:tableNumber/checkout', async (req, res) => {
     table.qrCodeUrl = null;
     table.qrCodeToken = null;
     await table.save();
+    await QRCodeOrder.deleteMany({ tableNumber: req.params.tableNumber });
     res.status(200).json({ message: '結帳成功，QR Code 已失效' });
   } catch (error) {
     console.error('結帳失敗:', error);
