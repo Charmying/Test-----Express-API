@@ -18,6 +18,7 @@ const test1Routes = require('./routes/test1Routes');
 const test2Routes = require('./routes/test2Routes');
 const userRoutes = require('./routes/userRoutes');
 const qrcodeOrderRoutes = require('./routes/qrcodeOrderRoutes');
+const qrcodeOrderLoginRoutes = require('./routes/qrcodeOrderLoginRoutes');
 
 /** Initialize Express */
 const app = express();
@@ -72,6 +73,7 @@ app.use('/test1', test1Routes);
 app.use('/test2', test2Routes);
 app.use('/users', userRoutes);
 app.use('/qrcodeOrder', qrcodeOrderRoutes);
+app.use('/auth', qrcodeOrderLoginRoutes);
 
 // Set up homepage route
 app.get('/', (req, res) => {
